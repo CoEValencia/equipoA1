@@ -19,9 +19,9 @@
         Modulos de Devon
     -->
     <import resource="classpath:devon/resources/core/ac-devon-core.xml" />
-    <import resource="classpath:devon/resources/core/ac-devon-data-access.xml" />
+    <!-- <import resource="classpath:devon/resources/core/ac-devon-data-access.xml" /> -->
     <import resource="classpath:devon/resources/web/ac-devon-webmvc.xml" />
-    <import resource="classpath:devon/resources/hibernate/ac-devon-hibernate.xml" />
+    <!-- <import resource="classpath:devon/resources/hibernate/ac-devon-hibernate.xml" /> -->
 
     <!--
         Security
