@@ -17,7 +17,7 @@
         <!-- Devon -->
         <dependency><groupId>es.capgemini</groupId><artifactId>devon-core</artifactId><version>${devon.version}</version></dependency>
         <dependency><groupId>es.capgemini</groupId><artifactId>devon-web</artifactId><version>${devon.version}</version></dependency>
-        <dependency><groupId>es.capgemini</groupId><artifactId>devon-hibernate</artifactId><version>${devon.version}</version></dependency>
+        <!-- <dependency><groupId>es.capgemini</groupId><artifactId>devon-hibernate</artifactId><version>${devon.version}</version></dependency> -->
 
 		<!-- Devon Web Resources -->
 		<dependency><groupId>es.capgemini</groupId><artifactId>devon-web-extjs5</artifactId><version>${devon.version}</version><classifier>resources</classifier><type>zip</type><scope>provided</scope></dependency>
