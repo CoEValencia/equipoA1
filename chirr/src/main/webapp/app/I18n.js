@@ -2,7 +2,7 @@ Ext.define('App.I18n', {
     singleton:true
 }, function(){
     Fwk.I18n.add({
-        es : {
+        en : {
             applicacion : 'chirr',
             inicio: {
                 titulo: 'Inicio',
@@ -18,9 +18,12 @@ Ext.define('App.I18n', {
                         opcion1 : 'Menu 1.1'
                     }
                 }
+            },
+            loginUser: {
+                register: 'Register'
             }
         }
     });
 
-    Fwk.I18n.resolveLocale("es_ES");
+    Fwk.I18n.resolveLocale("en_EN");
 });

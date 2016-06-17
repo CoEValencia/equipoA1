@@ -1,3 +1,37 @@
 .x-form-text {
-  display: inline !important;
+	display: inline !important;
+}
+
+.subtitle {
+	font-weight: 400;
+}
+
+.fancy {
+	line-height: 0.5;
+	text-align: center;
+}
+
+.fancy span {
+	display: inline-block;
+	position: relative;
+}
+
+.fancy span:before, .fancy span:after {
+	content: "";
+	position: absolute;
+	height: 4px;
+	border-bottom: 1px solid #d0d0d0;
+	top: 0;
+	width: 600px;
+}
+
+.fancy span:before {
+	right: 100%;
+	margin-right: 15px;
+	margin-left: 10px;
+}
+
+.fancy span:after {
+	left: 100%;
+	margin-left: 15px;
 }
