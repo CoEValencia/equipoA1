@@ -1,6 +1,8 @@
 Ext.define('App.view.Header', {
    extend:'Fwk.panel.Panel',
    alias:'widget.fwkheader',
+   requires:['App.view.HeaderController'],
+   controller: 'fwkheader',
    border : false,
    initComponent:function(){
       if (window == window.top) {
@@ -30,21 +32,44 @@ Ext.define('App.view.Header', {
                   items:[{
                       border:false,
                       xtype:'fwkpanel',
-                      html:'<img src="rs/rs/extjs5/fwk/img/logoDevon_v4.0.png" />',
-                      width:300
+                      html:'<img src="css/img/chirr-logo.png" />',
+                      width:120
+                   },{
+//                       xtype:'label',
+//                       html: 'jeje'
+//                   },{
+                       xtype:'container',
+                       border:false,
+                       flex:1,
+                       padding:'0 10 0 0',
+                       layout:{
+                           type:'hbox',
+                           align:'middle',
+                           pack:'end'
+                       },
+                       items:[{
+                           xtype: 'fwkbutton',
+                           text: 'Welcome ' + Fwk.Security.userInfo.username + '!',
+                           cls: 'app_link_btn',
+                           iconCls: 'fa fa-user',
+                           menu : {
+                               plain: true,
+                               items: [{
+                                   text: 'Profile',
+                                   listeners:{
+                                       click: 'showProfile'
+                                   }
+                               },{
+                                   text: 'Disconnect',
+                                   listeners:{
+                                       click: 'doLogout'
+                                   }
+                               }]
+                           }
+                       }]
                    }]
-              },{
-              xtype:'fwkmainmenu',
-              border:'2 0 2 0',
-              style: {
-                  borderColor: 'white',
-                  borderStyle: 'solid'
-              },
-              flex:1,
-              layout:{
-                  type:'hbox'
               }
-          }]
+           ]
      };
    }
 });

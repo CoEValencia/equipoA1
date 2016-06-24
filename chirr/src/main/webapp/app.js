@@ -4,6 +4,7 @@ Fwk.app.Application.application({
 //Sobreescrir si se requiere
     //fwkBOPathSuffix:'.wbo',
     useSecurity:true,
+    multiTabs:false,
     fwkLogin: {
         //view: 'Fwk.view.login.Login',
         view: 'App.view.login.Login',
