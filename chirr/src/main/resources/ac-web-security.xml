@@ -11,21 +11,19 @@
     <bean id="userService" parent="fwk.sec.JDBCUsersDetailService" p:dataSource-ref="masterDataSource" />
     -->
     
-    <!-- <bean id="userService" parent="fwk.sec.hibernate.userDetailService"/> -->
+    <bean id="userService" parent="fwk.sec.hibernate.userDetailService"/>
 
-    <!-- Custom authenticationProvider (Devon + passencoder) 
+    <!-- Custom authenticationProvider (Devon + passencoder) -->
     <bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" />
     <bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource" p:userPropertyToUse="id" />
-    -->
 
-    <!-- Custom authenticationProvider 
+    <!-- Custom authenticationProvider -->
     <bean id="authenticationProvider" parent="fwk.sec.authenticationProvider"
         p:userDetailsService-ref="userService"
 		p:passwordEncoder-ref="passwordEncoder"
         p:saltSource-ref="saltSource">
     </bean>
-    -->
     
-    <bean id="authenticationProvider" class="com.capgemini.chirr.common.CustomAuthenticationProvider"/>
+    <!-- <bean id="authenticationProvider" class="com.capgemini.chirr.common.CustomAuthenticationProvider"/> -->
     
 </beans>
