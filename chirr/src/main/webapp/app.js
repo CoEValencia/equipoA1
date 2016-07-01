@@ -4,7 +4,7 @@ Fwk.app.Application.application({
 //Sobreescrir si se requiere
     //fwkBOPathSuffix:'.wbo',
     useSecurity:true,
-    multiTabs:true,
+    multiTabs:false,
     fwkLogin: {
         //view: 'Fwk.view.login.Login',
         view: 'App.view.login.Login',
@@ -18,9 +18,19 @@ Fwk.app.Application.application({
     ],
 
     models:[],
-    stores:[],
+    stores:[
+            'message.MessageController'
+            ],
     views:[
-           'login.Login'
+           'login.Login',
+           'message.Message',
+           'message.MessageList'
            ]
 });
 
+Fwk.createStore = function(name) {
+    if (!Fwk.sequenceStore) Fwk.sequenceStore = 0;
+    Fwk.sequenceStore++;
+    
+    return Ext.create('store.'+name, {name: 'store.'+name+'.'+Fwk.sequenceStore});
+}; 
