@@ -17,10 +17,29 @@ Fwk.app.Application.application({
         'App.BusinessOperations'
     ],
 
-    models:[],
-    stores:[],
+    models:[
+            'App.model.stream.StreamM',
+            'App.model.flow.FlowM',
+            'App.model.message.MessageM'
+            ],
+    stores:[
+            'App.store.stream.StreamS',
+            'App.store.flow.FlowS',
+            'App.store.message.MessageS',
+            'App.store.message.MessageChatS'
+            ],
     views:[
-           'login.Login'
+           'login.Login',
+           'App.view.portal.Portal',
+           'App.view.portal.SpadeFavorito',
+           'App.view.portal.PersonaSinAsignar',
+           'App.view.portal.DatosEquipo',
            ]
 });
 
+Fwk.createStore = function(name) {
+    if (!Fwk.sequenceStore) Fwk.sequenceStore = 0;
+    Fwk.sequenceStore++;
+    
+    return Ext.create('store.'+name, {name: 'store.'+name+'.'+Fwk.sequenceStore});
+};
