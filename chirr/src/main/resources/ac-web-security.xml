@@ -8,8 +8,8 @@
 	default-autowire="byName">
 
     <!-- Custom userDetailsService
-    <bean id="userService" parent="fwk.sec.JDBCUsersDetailService" p:dataSource-ref="masterDataSource" />
     -->
+    <bean id="userService" parent="fwk.sec.JDBCUsersDetailService" p:dataSource-ref="masterDataSource" />
     
     <bean id="userService" parent="fwk.sec.hibernate.userDetailService"/>
 
@@ -23,7 +23,5 @@
 		p:passwordEncoder-ref="passwordEncoder"
         p:saltSource-ref="saltSource">
     </bean>
-    
-    <!-- <bean id="authenticationProvider" class="com.capgemini.chirr.common.CustomAuthenticationProvider"/> -->
     
 </beans>
