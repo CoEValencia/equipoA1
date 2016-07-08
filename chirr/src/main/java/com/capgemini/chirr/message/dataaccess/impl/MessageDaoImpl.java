@@ -14,7 +14,7 @@ import es.capgemini.devon.hibernate.dao.AbstractHibernateDao;
 import es.capgemini.devon.utils.StringUtils;
 
 @Repository("messageDao")
-public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long>implements MessageDao {
+public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long> implements MessageDao {
 
     @SuppressWarnings("unchecked")
     @Override
@@ -35,7 +35,7 @@ public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long>imp
         }
 
         if (dto.getUser() != null && dto.getUser().getId() != null) {
-            hql.append(" AND m.user.id = :user");
+            hql.append(" AND m.user.id != :user");
             params.put("user", dto.getUser().getId());
         }
 
@@ -47,7 +47,7 @@ public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long>imp
         if (StringUtils.hasText(dto.getSort())) {
             hql.append(addOrderBy(dto));
         } else {
-            hql.append(" order by m.time DESC");
+            hql.append(" order by m.time ASC");
         }
 
         Query query = getSession().createQuery(hql.toString());

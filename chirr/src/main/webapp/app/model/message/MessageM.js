@@ -12,7 +12,8 @@ Ext.define('App.model.message.MessageM',{
             },
             {
                 name:'time',
-                type:'auto'
+                type:'date',
+                dateFormat: 'c'
             },
             {
                 name:'user',

@@ -1,6 +1,8 @@
 package com.capgemini.chirr.message.logic.api.dto;
 
 import org.joda.time.LocalDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.capgemini.chirr.flow.logic.api.dto.FlowDto;
 import com.capgemini.chirr.utils.UserDto;
@@ -9,16 +11,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import es.capgemini.devon.pagination.PaginationParamsImpl;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MessageDto extends PaginationParamsImpl{
+public class MessageDto extends PaginationParamsImpl {
 
     private static final long serialVersionUID = 1L;
 
     private Long id;
     private String content;
+    @DateTimeFormat(iso = ISO.DATE_TIME)
     private LocalDateTime time;
     private FlowDto flow;
     private UserDto user;
 
+    @DateTimeFormat(iso = ISO.DATE_TIME)
     private LocalDateTime lastMessage;
 
     public Long getId() {

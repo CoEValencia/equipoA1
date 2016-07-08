@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import es.capgemini.devon.pagination.PaginationParamsImpl;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserDto extends PaginationParamsImpl{
+public class UserDto extends PaginationParamsImpl {
 
     private static final long serialVersionUID = 1L;
 
@@ -16,6 +16,7 @@ public class UserDto extends PaginationParamsImpl{
     private String apellido1;
     private String apellido2;
     private String email;
+    private Long color = 3L;
 
     public Long getId() {
         return id;
@@ -71,6 +72,14 @@ public class UserDto extends PaginationParamsImpl{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Long getColor() {
+        return color;
+    }
+
+    public void setColor(Long color) {
+        this.color = color;
     }
 
 }

@@ -8,8 +8,8 @@
 	default-autowire="byName">
 
     <!-- Custom userDetailsService
-    -->
     <bean id="userService" parent="fwk.sec.JDBCUsersDetailService" p:dataSource-ref="masterDataSource" />
+    -->
     
     <bean id="userService" parent="fwk.sec.hibernate.userDetailService"/>
 

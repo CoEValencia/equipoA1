@@ -11,19 +11,19 @@ Ext.define('App.view.StartPageController', {
         this.callParent(arguments);
     },
     
-    ping: function(){        
-        var runner = new Ext.util.TaskRunner(),
-        task = runner.start({
-             run: function(){ 
-                 App.bo['ping']({
-                     jsonData: {},
-                     success: function(result, options) {
-
-                     }
-                 });
-             },
-             interval: 60000
-        });
+    ping: function(){
+//        var runner = new Ext.util.TaskRunner(),
+//        task = runner.start({
+//             run: function(){ 
+//                 App.bo['ping']({
+//                     jsonData: {},
+//                     success: function(result, options) {
+//
+//                     }
+//                 });
+//             },
+//             interval: 60000
+//        });
     },
     
     addItems: function(view){
