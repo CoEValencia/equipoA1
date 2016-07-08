@@ -24,6 +24,4 @@
         p:saltSource-ref="saltSource">
     </bean>
     
-    <!-- <bean id="authenticationProvider" class="com.capgemini.chirr.common.CustomAuthenticationProvider"/> -->
-    
 </beans>
