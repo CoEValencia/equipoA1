@@ -13,6 +13,7 @@ Ext.define('App.BusinessOperations', {
         'flowDelete' : {url: 'bo/FLOW_DELETE' + Fwk.config.fwkBOPathSuffix},
         'messageGet' : {url: 'bo/MESSAGE_GET' + Fwk.config.fwkBOPathSuffix},
         'messageFind' : {url: 'bo/MESSAGE_FIND' + Fwk.config.fwkBOPathSuffix},
+        'messageCount' : {url: 'bo/MESSAGE_COUNT' + Fwk.config.fwkBOPathSuffix},
         'messageUpdate' : {url: 'bo/MESSAGE_UPDATE' + Fwk.config.fwkBOPathSuffix},
         'messageDelete' : {url: 'bo/MESSAGE_DELETE' + Fwk.config.fwkBOPathSuffix},
     });
