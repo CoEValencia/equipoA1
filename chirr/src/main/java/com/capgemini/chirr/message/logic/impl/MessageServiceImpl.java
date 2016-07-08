@@ -43,6 +43,12 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Integer count(@RequestBody MessageDto dto) {
+        return messageDao.count(dto);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public void update(@RequestBody MessageDto dto) {
 
@@ -52,12 +58,12 @@ public class MessageServiceImpl implements MessageService {
         message.setTime(new LocalDateTime());
 
         User user = userManager.get(dto.getUser().getId());
-        if(user != null){
+        if (user != null) {
             message.setUser(user);
         }
 
         FlowEntity flow = flowService.get(dto.getFlow().getId());
-        if(flow != null){
+        if (flow != null) {
             message.setFlow(flow);
         }
 

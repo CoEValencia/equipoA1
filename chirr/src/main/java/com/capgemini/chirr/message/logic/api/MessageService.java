@@ -17,6 +17,9 @@ public interface MessageService {
     @WebBusinessOperation(value = "MESSAGE_FIND", convertToClass = MessageDto.class)
     List<MessageEntity> find(MessageDto dto);
 
+    @WebBusinessOperation(value = "MESSAGE_COUNT")
+    Integer count(MessageDto dto);
+
     @WebBusinessOperation(value = "MESSAGE_UPDATE")
     void update(MessageDto dto);
 

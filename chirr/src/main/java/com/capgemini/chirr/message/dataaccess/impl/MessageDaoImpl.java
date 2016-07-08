@@ -14,20 +14,30 @@ import es.capgemini.devon.hibernate.dao.AbstractHibernateDao;
 import es.capgemini.devon.utils.StringUtils;
 
 @Repository("messageDao")
-public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long> implements MessageDao {
+public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long>implements MessageDao {
 
     @SuppressWarnings("unchecked")
     @Override
     public List<MessageEntity> find(MessageDto dto) {
-        Query query = findQuery(dto);
+        Query query = findQuery(dto, false);
         return query.list();
     }
 
-    private Query findQuery(MessageDto dto) {
+    @Override
+    public Integer count(MessageDto dto) {
+        Query query = findQuery(dto, true);
+        return (Integer) query.uniqueResult();
+    }
+
+    private Query findQuery(MessageDto dto, Boolean count) {
 
         StringBuilder hql = new StringBuilder();
         HashMap<String, Object> params = new HashMap<String, Object>();
-        hql.append("from MessageEntity m where 1=1");
+        if (count) {
+            hql.append("count (1) from MessageEntity m where 1=1");
+        } else {
+            hql.append("from MessageEntity m where 1=1");
+        }
 
         if (dto.getFlow() != null && dto.getFlow().getId() != null) {
             hql.append(" AND m.flow.id = :flow");

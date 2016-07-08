@@ -10,4 +10,6 @@ import es.capgemini.devon.hibernate.dao.HibernateDao;
 public interface MessageDao extends HibernateDao<MessageEntity, Long> {
 
     List<MessageEntity> find(MessageDto dto);
+
+    Integer count(MessageDto dto);
 }
