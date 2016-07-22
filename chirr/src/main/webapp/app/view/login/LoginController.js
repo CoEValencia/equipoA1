@@ -9,10 +9,11 @@ Ext.define('App.view.login.LoginController',{
             'login' : {
                 afterrender: this.setFocus,
                 securityloginsuccess: this.loginSuccess,
-                securityloginfailure: this.loginFailure
+                securityloginfailure: this.loginFailure,
+                editDone: this.editDone,
+                editCancel: this.editCancel
             }
         });
-
     },
 
     doLogin: function(btn) {
@@ -54,6 +55,35 @@ Ext.define('App.view.login.LoginController',{
 
     setFocus : function(){
         this.lookupReference('username').focus();
-    }
+    },
+    
+    doRegister: function(btn){
+        var title = 'Registrar';
 
+        var panel = Ext.create('App.view.user.AddUser', {
+            parentView : this.getView()
+        });
+
+        Fwk.Window.create({
+            parentView : this.getView(),
+            panel : panel,
+            options : {
+                draggable:true,
+                title:title
+            },
+            events : {
+                done: 'editDone',
+                cancel: 'editCancel'
+            }
+        }).show();
+    },
+    
+    editCancel: function(window){
+        window.close();
+    },
+    
+    editDone: function(window){
+        window.close();
+    },
+    
 });
