@@ -16,6 +16,7 @@ Ext.define('App.BusinessOperations', {
         'messageCount' : {url: 'bo/MESSAGE_COUNT' + Fwk.config.fwkBOPathSuffix},
         'messageUpdate' : {url: 'bo/MESSAGE_UPDATE' + Fwk.config.fwkBOPathSuffix},
         'messageDelete' : {url: 'bo/MESSAGE_DELETE' + Fwk.config.fwkBOPathSuffix},
+        'userCreate' : {url: 'bo/USER_UPDATE' + Fwk.config.fwkBOPathSuffix},        
     });
 
 });

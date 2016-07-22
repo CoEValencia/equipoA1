@@ -41,7 +41,8 @@ Fwk.app.Application.application({
            'App.view.main.MainView',
            'App.view.message.Message',
            'App.view.message.MessageList',
-           'App.view.message.MessageInput'
+           'App.view.message.MessageInput',
+           'App.view.user.AddUser'
            ]
 });
 
