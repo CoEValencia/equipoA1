@@ -5,8 +5,8 @@ Ext.define('App.view.message.MessageListController', {
     init : function() {
         this.control({
             'messagelist': {
-                afterrender: this.loadData,
-                addInputMessage: this.addInputMessage
+                addInputMessage: this.addInputMessage,
+                loadFlow: this.loadFlow
             }
         });
 
@@ -19,7 +19,7 @@ Ext.define('App.view.message.MessageListController', {
         var message = {
                 user:    Fwk.Security.userInfo,
                 //TODO el flow habrá que cogerlo del componente
-                flow:    {id: 1},
+                flow:    {id: this.flowId},
                 content: content,
                 time:    new Date(),
                 id:      null
@@ -41,16 +41,42 @@ Ext.define('App.view.message.MessageListController', {
 
     },
     
-    scrollToBottom: function() {
-        var dataview = this.lookupReference('messagedataview');
-        dataview.el.scroll('b', Infinity, true);        
-    },  
-    
-    loadData: function() {
+    loadFlow: function(flowId) {
         var me = this;
         var dataview = this.lookupReference('messagedataview');
         var store = dataview.getStore();
         
+        if (me.task) me.task.stop();
+        
+        me.lastMessage = new Date();
+        me.flowId = flowId;
+
+        var params = {
+            flow: {
+                id: flowId
+            }
+        };
+
+        store.load({
+            params: params,
+            callback: function(records, operation, success) {
+                if (success && records.length > 0) {
+                    me.lastMessage = records[records.length-1].data.time;
+                    
+                    dataview.refresh();
+                    me.scrollToBottom(false);
+
+                    if (me.task) {
+                        me.task.start();
+                    }
+                    else {
+                        me.createTask();
+                    }
+                }
+            }
+        });
+        
+        /*
         App.bo['messageFind']({
             jsonData: {},
             success: function(result, options) {
@@ -68,22 +94,34 @@ Ext.define('App.view.message.MessageListController', {
                 
             }
         });
+        */
     },
     
-    startTask: function(){
+    scrollToBottom: function(animate) {
+        var dataview = this.lookupReference('messagedataview');
+        animate = typeof animate !== 'undefined' ? animate : true;
+        dataview.el.scroll('b', Infinity, animate);        
+    },  
+
+    createTask: function(){
         
         var me = this;
         var dataview = this.lookupReference('messagedataview');
         var store = dataview.getStore();
         
-        var runner = new Ext.util.TaskRunner(),
-        task = runner.start({
-             run: function(){ 
-                 App.bo['messageFind']({
-                     jsonData: {
+        var runner = new Ext.util.TaskRunner();
+        me.task = runner.newTask({
+             run: function(){
+                 var params = {
                          user: Fwk.Security.userInfo,
-                         lastMessage: me.lastMessage
-                     },
+                         lastMessage: me.lastMessage,
+                         flow: {
+                             id: me.flowId
+                         }
+                 };
+
+                 App.bo['messageFind']({
+                     jsonData: params,  
                      success: function(result, options) {
                          
                          if (result.length) {
@@ -95,9 +133,18 @@ Ext.define('App.view.message.MessageListController', {
                          
                      }
                  });
+                 
+                 /*
+                 store.load({
+                     params: params,
+                     addRecords: true
+                 });
+                 */
              },
              interval: 5000
-        }); 
+        });
+        
+        me.task.start();
     },
     
 });
