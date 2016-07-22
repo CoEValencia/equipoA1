@@ -1,8 +1,8 @@
 Ext.define('App.view.flow.FlowList', {
     extend:'Ext.container.Container',
     alias:'widget.flowlist',
-//    requires:['App.view.flow.FlowListController'],
-//    controller: 'flowlist',
+    requires:['App.view.flow.FlowListController'],
+    controller: 'flowlist',
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -23,12 +23,21 @@ Ext.define('App.view.flow.FlowList', {
         return {
             xtype: 'grid',
             reference: 'grid',
-            store: this.getStore(),
+            store: Fwk.createStore('flow'),
             hideHeaders: true,
             rowLines: false,
+            selModel: 'rowmodel',
             plugins: {
                 ptype: 'cellediting',
-                clicksToEdit: 1
+                pluginId: 'cellediting',
+                listeners: {
+                    beforeedit: 'onBeforeEdit',
+                    edit: 'onEdit'
+                }
+            },
+            listeners: {
+              viewready: 'onViewReady',
+              select: 'onSelect'
             },
             columns: [{
                 header: 'Content',
@@ -44,35 +53,11 @@ Ext.define('App.view.flow.FlowList', {
                 widget: {
                     xtype: 'button',
                     ui: 'icon-only',
-                    iconCls: 'fa fa-pencil'
+                    iconCls: 'fa fa-pencil',
+                    handler: 'onEditClick'
                 }
             }]
         };
-    },
-    
-    getList: function() {
-        return {
-            xtype:'message',
-            reference:'messagedataview',
-            flex:1,
-            store: Fwk.createStore('messagechat'),
-            //store: this.getStore(),
-            scrollable: true
-        };
-
-    },
-
-    getStore: function() {
-        return Ext.create('Ext.data.Store', {
-            model: 'App.model.flow.FlowM',
-            data: [
-                   {
-                       name: 'Main flow',
-                   },{
-                       name: 'Flow nº2'
-                   }
-                   ]
-        });
     }
 
 });

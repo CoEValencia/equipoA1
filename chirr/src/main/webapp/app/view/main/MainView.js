@@ -1,8 +1,8 @@
 Ext.define('App.view.main.MainView', {
     extend : 'Ext.container.Container',
     alias : 'widget.mainview',
-//    requires:['App.view.main.MainViewController'],
-//    controller: 'mainview',
+    requires:['App.view.main.MainViewController'],
+    controller: 'mainview',
     
     layout:{
         type:'hbox',
@@ -22,13 +22,17 @@ Ext.define('App.view.main.MainView', {
         return {
             xtype:'flowlist',
             reference:'flowlist',
-            width: 300
+            width: 300,
+            listeners: {
+                flowSelect: 'onFlowSelect'
+            }
         };
     },
     
     getChat: function() {
         return {
             xtype: 'chat',
+            reference: 'chat',
             flex: 1
         };
     }

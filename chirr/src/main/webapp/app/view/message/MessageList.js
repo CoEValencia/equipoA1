@@ -32,15 +32,18 @@ Ext.define('App.view.message.MessageList', {
             xtype:'message',
             reference:'messagedataview',
             flex:1,
-            store: Fwk.createStore('messagechat'),
-            //store: this.getStore(),
+            store: Fwk.createStore('message'),
             scrollable: true
         };
 
     },
 
-    addMessage: function(message){
-        this.fireEvent('addInputMessage',message);
+    addMessage: function(message) {
+        this.fireEvent('addInputMessage', message);
+    },
+    
+    loadFlow: function(flowId) {
+        this.fireEvent('loadFlow', flowId);
     },
 
     getStore: function() {

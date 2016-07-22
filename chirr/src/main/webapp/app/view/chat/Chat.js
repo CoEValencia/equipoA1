@@ -33,5 +33,9 @@ Ext.define('App.view.chat.Chat', {
                 messageSent: 'messageSent'
             }
         };
+    },
+    
+    loadFlow: function(flowId) {
+        this.fireEvent('loadFlow', flowId);
     }
 });

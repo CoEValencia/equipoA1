@@ -18,7 +18,7 @@ import es.capgemini.devon.security.user.model.User;
 import es.capgemini.devon.security.user.service.UserManager;
 
 @Service("flowService")
-public class FlowServiceImpl implements FlowService{
+public class FlowServiceImpl implements FlowService {
 
     @Autowired
     private FlowDao flowDao;
@@ -50,12 +50,12 @@ public class FlowServiceImpl implements FlowService{
         flow.setName(dto.getName());
 
         User owner = userManager.get(dto.getOwner().getId());
-        if(owner != null){
+        if (owner != null) {
             flow.setOwner(owner);
         }
 
         StreamEntity stream = streamService.get(dto.getStream().getId());
-        if(owner != null){
+        if (stream != null) {
             flow.setStream(stream);
         }
 
