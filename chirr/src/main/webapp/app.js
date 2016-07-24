@@ -32,10 +32,6 @@ Fwk.app.Application.application({
     views:[
            'login.Login',
            'App.view.StartPageJaime',
-           'App.view.portal.Portal',
-           'App.view.portal.SpadeFavorito',
-           'App.view.portal.PersonaSinAsignar',
-           'App.view.portal.DatosEquipo',
            'App.view.flow.FlowList',
            'App.view.chat.Chat',
            'App.view.main.MainView',

@@ -11,4 +11,6 @@ public interface FlowDao extends HibernateDao<FlowEntity, Long> {
 
     List<FlowEntity> find(FlowDto dto);
 
+    List<FlowDto> findWithUnread(FlowDto dto);
+
 }

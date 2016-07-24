@@ -17,6 +17,9 @@ public interface FlowService {
     @WebBusinessOperation(value = "FLOW_FIND", convertToClass = FlowDto.class)
     List<FlowEntity> find(FlowDto dto);
 
+    @WebBusinessOperation(value = "FLOW_FIND_WITH_UNREAD", convertToClass = FlowDto.class)
+    List<FlowDto> findWithUnread(FlowDto dto);
+
     @WebBusinessOperation(value = "FLOW_UPDATE")
     void update(FlowDto dto);
 

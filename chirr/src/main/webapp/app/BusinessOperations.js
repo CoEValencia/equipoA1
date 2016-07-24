@@ -9,6 +9,7 @@ Ext.define('App.BusinessOperations', {
         'streamDelete' : {url: 'bo/STREAM_DELETE' + Fwk.config.fwkBOPathSuffix},
         'flowGet' : {url: 'bo/FLOW_GET' + Fwk.config.fwkBOPathSuffix},
         'flowFind' : {url: 'bo/FLOW_FIND' + Fwk.config.fwkBOPathSuffix},
+        'flowFindWithUnread' : {url: 'bo/FLOW_FIND_WITH_UNREAD' + Fwk.config.fwkBOPathSuffix},
         'flowUpdate' : {url: 'bo/FLOW_UPDATE' + Fwk.config.fwkBOPathSuffix},
         'flowDelete' : {url: 'bo/FLOW_DELETE' + Fwk.config.fwkBOPathSuffix},
         'messageGet' : {url: 'bo/MESSAGE_GET' + Fwk.config.fwkBOPathSuffix},

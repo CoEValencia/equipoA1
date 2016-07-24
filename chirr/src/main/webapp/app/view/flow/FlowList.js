@@ -47,6 +47,10 @@ Ext.define('App.view.flow.FlowList', {
                 },
                 flex:1
             },{
+                header: 'Unread',
+                dataIndex:'',
+                
+            },{
                 header: 'Edit',
                 xtype: 'widgetcolumn',
                 width: 50,                

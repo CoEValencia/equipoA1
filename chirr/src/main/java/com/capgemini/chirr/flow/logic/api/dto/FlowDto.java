@@ -1,5 +1,9 @@
 package com.capgemini.chirr.flow.logic.api.dto;
 
+import org.joda.time.LocalDateTime;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.capgemini.chirr.stream.logic.api.dto.StreamDto;
 import com.capgemini.chirr.utils.UserDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,6 +19,11 @@ public class FlowDto extends PaginationParamsImpl {
     private String name;
     private UserDto owner;
     private StreamDto stream;
+
+    @DateTimeFormat(iso = ISO.DATE_TIME)
+    private LocalDateTime lastMessage;
+
+    private Integer unread;
 
     public Long getId() {
         return id;
@@ -47,4 +56,21 @@ public class FlowDto extends PaginationParamsImpl {
     public void setStream(StreamDto stream) {
         this.stream = stream;
     }
+
+    public LocalDateTime getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(LocalDateTime lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+
+    public Integer getUnread() {
+        return unread;
+    }
+
+    public void setUnread(Integer unread) {
+        this.unread = unread;
+    }
+
 }

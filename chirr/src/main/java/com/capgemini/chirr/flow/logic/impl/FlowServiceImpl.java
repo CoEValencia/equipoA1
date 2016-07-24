@@ -42,6 +42,11 @@ public class FlowServiceImpl implements FlowService {
     }
 
     @Override
+    public List<FlowDto> findWithUnread(FlowDto dto) {
+        return flowDao.findWithUnread(dto);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public void update(@RequestBody FlowDto dto) {
 
@@ -67,4 +72,5 @@ public class FlowServiceImpl implements FlowService {
     public void delete(Long id) {
         flowDao.deleteById(id);
     }
+
 }
