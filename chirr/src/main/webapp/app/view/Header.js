@@ -42,12 +42,14 @@ Ext.define('App.view.Header', {
                 iconCls: 'fa fa-user',
                 menu : {
                     plain: true,
-                    items: [{
-                        text: 'Profile',
-                        listeners:{
-                            click: 'showProfile'
-                        }
-                    },{
+                    items: [
+//                            {
+//                        text: 'Profile',
+//                        listeners:{
+//                            click: 'showProfile'
+//                        }
+//                    },
+                    {
                         text: 'Disconnect',
                         listeners:{
                             click: 'doLogout'

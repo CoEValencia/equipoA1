@@ -39,6 +39,10 @@ public class FlowEntity implements Serializable {
     @ManyToOne
     private StreamEntity stream;
 
+    //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "flow")
+    //    @Fetch(FetchMode.JOIN)
+    //    private final Collection<MessageEntity> messages = new HashSet<MessageEntity>();
+
     public Long getId() {
         return id;
     }

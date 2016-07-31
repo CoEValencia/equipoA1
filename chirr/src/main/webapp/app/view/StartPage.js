@@ -1,31 +1,28 @@
 Ext.define('App.view.StartPage', {
 	extend : 'Fwk.panel.Panel',
 	alias : 'widget.startpage',
-	
-	requires: ['App.view.StartPageController'],
-	controller:'startpage',
-	    	    
-	title: '**i18n.inicio.titulo',
-//	header:true,
-	iconCls:'icon_devon',
-	layout: 'fit',
-//	bodyCls:'startPageLogo',
-//	layout:{
-//		type:'vbox',
-//		align : 'stretch'
-//		//pack  : 'start'
-//	},
-	defaults: {
-		margin: 5
+
+	//title: '**i18n.inicio.titulo',
+	layout:{
+		type:'vbox',
+		align : 'stretch'
 	},
-	border:true,
-	items:[],
+	defaults: {
+	},
 	initComponent : function(){
 
         Ext.apply(this, {
-            title:i18n.inicio.titulo,
+            //title:i18n.inicio.titulo,
+            items:[this.getChat()]
         });
 
         this.callParent(arguments);
+    },
+    
+    getChat: function() {
+        return {
+            xtype: 'mainview',
+            flex: 1
+        };
     }
 });

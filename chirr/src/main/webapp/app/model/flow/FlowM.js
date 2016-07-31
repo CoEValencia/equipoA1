@@ -17,6 +17,10 @@ Ext.define('App.model.flow.FlowM',{
             {
                 name:'stream',
                 type:'auto'
+            },
+            {
+                name:'unread',
+                type:'int'
             }
             ]
 });

@@ -12,10 +12,44 @@ Ext.define('App.view.chat.Chat', {
 	initComponent : function(){
 
         Ext.apply(this, {
-            items:[this.getLista(), this.getInput()]
+            items:[this.getTitle(), this.getLista(), this.getInput()]
         });
 
         this.callParent(arguments);
+    },
+    
+    getTitle: function() {
+        return {
+            xtype: 'container',
+            layout: {
+                type: 'hbox',
+                align: 'middle'
+            },
+            cls: 'chat-title-panel',
+            height: 80,
+            defaults: {margin: 15},
+            items: [{
+                xtype: 'label',
+                reference: 'flowname',
+                cls: 'chat-title'
+            },{
+                xtype: 'label',
+                reference: 'searchlabel',
+                cls: 'search-label',
+                margin: 0
+            },{
+                xtype: 'tbfill'
+            },{
+                xtype: 'searchfield',
+                reference: 'searchfield',
+                emptyText: 'Chat search...',
+                width: 254,
+                listeners: {
+                    search: 'onSearch',
+                    change:  'onSearchChange'
+                }
+            }]
+        };
     },
     
     getLista: function() {
@@ -35,7 +69,7 @@ Ext.define('App.view.chat.Chat', {
         };
     },
     
-    loadFlow: function(flowId) {
-        this.fireEvent('loadFlow', flowId);
+    loadFlow: function(flow) {
+        this.fireEvent('loadFlow', flow);
     }
 });

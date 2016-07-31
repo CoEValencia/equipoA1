@@ -6,7 +6,9 @@ Ext.define('App.view.message.MessageListController', {
         this.control({
             'messagelist': {
                 addInputMessage: this.addInputMessage,
-                loadFlow: this.loadFlow
+                loadFlow: this.loadFlow,
+                search: this.search,
+                clearSearch: this.clearSearch
             }
         });
 
@@ -27,7 +29,6 @@ Ext.define('App.view.message.MessageListController', {
        
         message.user.color = 3;
         
-        //TODO guardar mensaje en BD
         App.bo['messageUpdate']({
             jsonData: message,
             success: function(result, options) {
@@ -46,7 +47,7 @@ Ext.define('App.view.message.MessageListController', {
         var dataview = this.lookupReference('messagedataview');
         var store = dataview.getStore();
         
-        if (me.task) me.task.stop();
+        me.stopTask();
         
         me.lastMessage = new Date();
         me.flowId = flowId;
@@ -75,36 +76,54 @@ Ext.define('App.view.message.MessageListController', {
                 }
             }
         });
-        
-        /*
-        App.bo['messageFind']({
-            jsonData: {},
-            success: function(result, options) {
-                
-                if (result.length) {                
-                    store.loadData(result);
-                    me.lastMessage = result[result.length-1].time;
-                    dataview.refresh();
-                    me.scrollToBottom();
-                } else {
-                    me.lastMessage = new Date();
-                }
-            
-                me.startTask();
-                
-            }
-        });
-        */
     },
     
     scrollToBottom: function(animate) {
         var dataview = this.lookupReference('messagedataview');
         animate = typeof animate !== 'undefined' ? animate : true;
         dataview.el.scroll('b', Infinity, animate);        
-    },  
+    },
+    
+    search: function(value) {
+        var me = this;
+        var dataview = this.lookupReference('messagedataview');
+        var store = dataview.getStore();
+        
+        me.stopTask();
+        
+        me.savedMsgs = store.getRange();
+        
+        var params = {
+                flow: {
+                    id: me.flowId
+                },
+                content: value
+        };
+
+        App.bo['messageFind']({
+            jsonData: params,  
+            success: function(result, options) {
+                
+                if (result.length) {
+                    store.setData(result);
+                    dataview.refresh();
+                    me.scrollToBottom();
+                } 
+                
+            }
+        });
+        
+    },
+    
+    clearSearch: function() {
+        this.loadFlow(this.flowId);
+    },
 
     createTask: function(){
         
+        var me = this;
+        var dataview = this.lookupReference('messagedataview');
+        var store = dataview.getStore();
         var me = this;
         var dataview = this.lookupReference('messagedataview');
         var store = dataview.getStore();
@@ -133,18 +152,23 @@ Ext.define('App.view.message.MessageListController', {
                          
                      }
                  });
-                 
-                 /*
-                 store.load({
-                     params: params,
-                     addRecords: true
-                 });
-                 */
              },
              interval: 5000
         });
         
         me.task.start();
     },
+    
+    startTask: function() {
+        if (this.task) {
+            this.task.start();
+        }
+    },
+    
+    stopTask: function() {
+        if (this.task) {
+            this.task.stop();
+        }
+    }
     
 });

@@ -9,6 +9,7 @@ Ext.define('App.BusinessOperations', {
         'streamDelete' : {url: 'bo/STREAM_DELETE' + Fwk.config.fwkBOPathSuffix},
         'flowGet' : {url: 'bo/FLOW_GET' + Fwk.config.fwkBOPathSuffix},
         'flowFind' : {url: 'bo/FLOW_FIND' + Fwk.config.fwkBOPathSuffix},
+        'flowFindWithCount' : {url: 'bo/FLOW_FIND_WITH_UNREAD' + Fwk.config.fwkBOPathSuffix},
         'flowUpdate' : {url: 'bo/FLOW_UPDATE' + Fwk.config.fwkBOPathSuffix},
         'flowDelete' : {url: 'bo/FLOW_DELETE' + Fwk.config.fwkBOPathSuffix},
         'messageGet' : {url: 'bo/MESSAGE_GET' + Fwk.config.fwkBOPathSuffix},
@@ -16,7 +17,7 @@ Ext.define('App.BusinessOperations', {
         'messageCount' : {url: 'bo/MESSAGE_COUNT' + Fwk.config.fwkBOPathSuffix},
         'messageUpdate' : {url: 'bo/MESSAGE_UPDATE' + Fwk.config.fwkBOPathSuffix},
         'messageDelete' : {url: 'bo/MESSAGE_DELETE' + Fwk.config.fwkBOPathSuffix},
-        'userCreate' : {url: 'bo/USER_UPDATE' + Fwk.config.fwkBOPathSuffix},        
+        'userCreate' : {url: 'public/USER_CREATE' + Fwk.config.fwkBOPathSuffix},        
     });
 
 });
