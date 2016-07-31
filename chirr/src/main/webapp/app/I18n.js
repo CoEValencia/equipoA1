@@ -21,6 +21,9 @@ Ext.define('App.I18n', {
             },
             loginUser: {
                 register: 'Register'
+            },
+            logoutUser: {
+                title: 'Logout'
             }
         }
     });

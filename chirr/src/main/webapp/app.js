@@ -5,12 +5,10 @@ Fwk.app.Application.application({
     //fwkBOPathSuffix:'.wbo',
     useSecurity:true,
     multiTabs:false,
-    startPageView: 'App.view.StartPageJaime',
+    startPageView: 'App.view.StartPage',  
     fwkLogin: {
-        //view: 'Fwk.view.login.Login',
         view: 'App.view.login.Login',
         loginUrl: 'j_spring_security_check',
-        //webpropertiesUrl: 'webproperties/list + Fwk.config.fwkBOPathSuffix'
         webpropertiesUrl: 'webproperties/list'
     },
     requires : [
@@ -31,7 +29,6 @@ Fwk.app.Application.application({
             ],
     views:[
            'login.Login',
-           'App.view.StartPageJaime',
            'App.view.flow.FlowList',
            'App.view.chat.Chat',
            'App.view.main.MainView',

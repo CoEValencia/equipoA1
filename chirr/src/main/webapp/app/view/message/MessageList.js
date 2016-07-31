@@ -45,28 +45,12 @@ Ext.define('App.view.message.MessageList', {
     loadFlow: function(flowId) {
         this.fireEvent('loadFlow', flowId);
     },
+    
+    search: function(value) {
+        this.fireEvent('search', value);
+    },
 
-    getStore: function() {
-        return Ext.create('Ext.data.Store', {
-            model: 'App.model.message.MessageM',
-            data: [
-                   {
-                       user: {
-                           username: 'Pepe',
-                           color: 1
-                       },
-                       content: 'Lorem fistrum no te digo trigo por no llamarte Rodrigor de la pradera caballo blanco caballo negroorl.',
-                       time: '2016-07-02T14:01:17.346Z'
-                   },{
-                       user: {
-                           username: 'Popi',
-                           color: 2
-                       },
-                       content: 'Papaar papaar benemeritaar pecador.',
-                       time: '2016-07-02T14:03:39.782Z'
-                   }
-                   ]
-        });
+    clearSearch: function() {
+        this.fireEvent('clearSearch');
     }
-
 });

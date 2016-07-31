@@ -8,7 +8,8 @@ Ext.define('App.store.flow.FlowS',{
     proxy:{
         type: 'fwkajax',
         paramsAsJson:true,
-        url:App.bo['flowFind'].url,   
+        //url:App.bo['flowFind'].url,   
+        url:App.bo['flowFindWithCount'].url,   
         reader: {
             type:'json',
             rootProperty:'data'

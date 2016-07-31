@@ -12,8 +12,8 @@ Ext.define('App.view.main.MainViewController', {
         this.callParent(arguments);
     },
     
-    onFlowSelect: function(flowlist, flowId) {
-        this.lookupReference('chat').loadFlow(flowId);
+    onFlowSelect: function(flowlist, flow) {
+        this.lookupReference('chat').loadFlow(flow);
     } 
     
 });

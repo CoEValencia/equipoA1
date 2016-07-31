@@ -4,10 +4,7 @@ Ext.define('App.view.main.MainView', {
     requires:['App.view.main.MainViewController'],
     controller: 'mainview',
     
-    layout:{
-        type:'hbox',
-        align : 'stretch'
-    },
+    layout:'border',
     
     initComponent : function(){
 
@@ -22,7 +19,9 @@ Ext.define('App.view.main.MainView', {
         return {
             xtype:'flowlist',
             reference:'flowlist',
-            width: 300,
+            width: 390,
+            region: 'west',
+            collapsible: true,
             listeners: {
                 flowSelect: 'onFlowSelect'
             }
@@ -33,7 +32,8 @@ Ext.define('App.view.main.MainView', {
         return {
             xtype: 'chat',
             reference: 'chat',
-            flex: 1
+            //flex: 1
+            region: 'center'
         };
     }
 });

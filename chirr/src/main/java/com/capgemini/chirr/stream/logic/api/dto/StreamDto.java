@@ -1,6 +1,6 @@
 package com.capgemini.chirr.stream.logic.api.dto;
 
-import com.capgemini.chirr.utils.UserDto;
+import com.capgemini.chirr.user.logic.api.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import es.capgemini.devon.pagination.PaginationParamsImpl;

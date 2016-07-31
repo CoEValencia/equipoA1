@@ -1,4 +1,4 @@
-package com.capgemini.chirr.utils;
+package com.capgemini.chirr.user.logic.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

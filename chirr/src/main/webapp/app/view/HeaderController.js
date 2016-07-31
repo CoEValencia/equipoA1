@@ -27,10 +27,9 @@ Ext.define('App.view.HeaderController', {
     
     doLogout: function(btn){
         Ext.Msg.show({
-            title: i18n.logout.title,
+            title: i18n.logoutUser.title,
             message: i18n.logout.message,
             buttons:Ext.Msg.YESNO,
-            icon: Ext.Msg.QUESTION,
             closable: false,
             //cls:'alert_msg',
             fn: function(btn) {

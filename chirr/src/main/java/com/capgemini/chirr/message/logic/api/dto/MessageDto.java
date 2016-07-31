@@ -5,7 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.capgemini.chirr.flow.logic.api.dto.FlowDto;
-import com.capgemini.chirr.utils.UserDto;
+import com.capgemini.chirr.user.logic.api.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import es.capgemini.devon.pagination.PaginationParamsImpl;

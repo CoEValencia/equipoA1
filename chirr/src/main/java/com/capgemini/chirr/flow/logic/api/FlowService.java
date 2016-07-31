@@ -3,6 +3,7 @@ package com.capgemini.chirr.flow.logic.api;
 import java.util.List;
 
 import com.capgemini.chirr.flow.dataaccess.api.entity.FlowEntity;
+import com.capgemini.chirr.flow.logic.api.dto.FlowCountDto;
 import com.capgemini.chirr.flow.logic.api.dto.FlowDto;
 
 import es.capgemini.devon.bo.annotations.BusinessProxy;
@@ -17,11 +18,11 @@ public interface FlowService {
     @WebBusinessOperation(value = "FLOW_FIND", convertToClass = FlowDto.class)
     List<FlowEntity> find(FlowDto dto);
 
-    @WebBusinessOperation(value = "FLOW_FIND_WITH_UNREAD", convertToClass = FlowDto.class)
-    List<FlowDto> findWithUnread(FlowDto dto);
+    @WebBusinessOperation(value = "FLOW_FIND_WITH_UNREAD")
+    List<FlowCountDto> findWithCount(FlowDto dto);
 
     @WebBusinessOperation(value = "FLOW_UPDATE")
-    void update(FlowDto dto);
+    void update(FlowCountDto dto);
 
     @WebBusinessOperation(value = "FLOW_DELETE")
     void delete(Long id);

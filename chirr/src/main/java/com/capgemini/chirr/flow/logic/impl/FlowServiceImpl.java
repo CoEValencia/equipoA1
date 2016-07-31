@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.capgemini.chirr.flow.dataaccess.api.FlowDao;
 import com.capgemini.chirr.flow.dataaccess.api.entity.FlowEntity;
 import com.capgemini.chirr.flow.logic.api.FlowService;
+import com.capgemini.chirr.flow.logic.api.dto.FlowCountDto;
 import com.capgemini.chirr.flow.logic.api.dto.FlowDto;
 import com.capgemini.chirr.stream.dataaccess.api.entity.StreamEntity;
 import com.capgemini.chirr.stream.logic.api.StreamService;
@@ -42,24 +43,24 @@ public class FlowServiceImpl implements FlowService {
     }
 
     @Override
-    public List<FlowDto> findWithUnread(FlowDto dto) {
-        return flowDao.findWithUnread(dto);
+    public List<FlowCountDto> findWithCount(@RequestBody FlowDto dto) {
+        return flowDao.findWithCount(dto);
     }
 
     @Override
     @Transactional(readOnly = false)
-    public void update(@RequestBody FlowDto dto) {
+    public void update(@RequestBody FlowCountDto dto) {
 
         FlowEntity flow = flowDao.getOrNew(dto.getId());
 
         flow.setName(dto.getName());
 
-        User owner = userManager.get(dto.getOwner().getId());
+        User owner = userManager.get(dto.getOwnerId());
         if (owner != null) {
             flow.setOwner(owner);
         }
 
-        StreamEntity stream = streamService.get(dto.getStream().getId());
+        StreamEntity stream = streamService.get(dto.getStreamId());
         if (stream != null) {
             flow.setStream(stream);
         }

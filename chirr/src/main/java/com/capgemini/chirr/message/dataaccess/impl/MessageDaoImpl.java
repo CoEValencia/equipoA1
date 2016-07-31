@@ -14,7 +14,7 @@ import es.capgemini.devon.hibernate.dao.AbstractHibernateDao;
 import es.capgemini.devon.utils.StringUtils;
 
 @Repository("messageDao")
-public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long>implements MessageDao {
+public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long> implements MessageDao {
 
     @SuppressWarnings("unchecked")
     @Override
@@ -52,6 +52,11 @@ public class MessageDaoImpl extends AbstractHibernateDao<MessageEntity, Long>imp
         if (dto.getLastMessage() != null) {
             hql.append(" AND m.time > :lastmessg");
             params.put("lastmessg", dto.getLastMessage());
+        }
+
+        if (StringUtils.hasText(dto.getContent())) {
+            hql.append(" AND upper(m.content) like '%'||:content||'%'");
+            params.put("content", dto.getContent().toUpperCase());
         }
 
         if (StringUtils.hasText(dto.getSort())) {

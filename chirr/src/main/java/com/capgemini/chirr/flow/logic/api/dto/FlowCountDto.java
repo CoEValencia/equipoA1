@@ -4,26 +4,20 @@ import org.joda.time.LocalDateTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
-import com.capgemini.chirr.stream.logic.api.dto.StreamDto;
-import com.capgemini.chirr.user.logic.api.dto.UserDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import es.capgemini.devon.pagination.PaginationParamsImpl;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class FlowDto extends PaginationParamsImpl {
-
-    private static final long serialVersionUID = 1L;
+public class FlowCountDto {
 
     private Long id;
     private String name;
-    private UserDto owner;
-    private StreamDto stream;
+    private Long ownerId;
+    private Long streamId;
 
     @DateTimeFormat(iso = ISO.DATE_TIME)
     private LocalDateTime lastMessage;
 
-    private Integer unread;
+    private Long unread;
 
     public Long getId() {
         return id;
@@ -41,20 +35,20 @@ public class FlowDto extends PaginationParamsImpl {
         this.name = name;
     }
 
-    public UserDto getOwner() {
-        return owner;
+    public Long getOwnerId() {
+        return ownerId;
     }
 
-    public void setOwner(UserDto owner) {
-        this.owner = owner;
+    public void setOwnerId(Long ownerId) {
+        this.ownerId = ownerId;
     }
 
-    public StreamDto getStream() {
-        return stream;
+    public Long getStreamId() {
+        return streamId;
     }
 
-    public void setStream(StreamDto stream) {
-        this.stream = stream;
+    public void setStreamId(Long streamId) {
+        this.streamId = streamId;
     }
 
     public LocalDateTime getLastMessage() {
@@ -65,11 +59,11 @@ public class FlowDto extends PaginationParamsImpl {
         this.lastMessage = lastMessage;
     }
 
-    public Integer getUnread() {
+    public Long getUnread() {
         return unread;
     }
 
-    public void setUnread(Integer unread) {
+    public void setUnread(Long unread) {
         this.unread = unread;
     }
 
